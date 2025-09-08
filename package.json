@@ -1,0 +1,26 @@
+{
+  "name": "entrega-final-backend1-brandani",
+  "version": "1.0.0",
+  "description": "Entrega final",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.18.0",
+    "mongoose-paginate-v2": "^1.9.1",
+    "socket.io": "^4.8.1"
+  }
+}

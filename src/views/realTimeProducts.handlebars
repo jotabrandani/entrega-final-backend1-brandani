@@ -1,0 +1,19 @@
+<h1>Gestión de Productos</h1>
+<form id="addProductForm">
+  <div class="mb-3">
+    <label for="title" class="form-label">Título</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Precio</label>
+    <input type="number" class="form-control" id="price" name="price" required>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Descripción</label>
+    <input type="text" class="form-control" id="description" name="description" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+<h2 class="mt-4">Productos</h2>
+<ul id="productList" class="list-group"></ul>

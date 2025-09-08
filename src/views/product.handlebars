@@ -1,0 +1,9 @@
+<h1>{{product.title}}</h1>
+<p>Precio: ${{product.price}}</p>
+<p>Descripción: {{product.description}}</p>
+{{#if cartId}}
+  <form action="/api/carts/{{cartId}}/product/{{product._id}}" method="POST">
+    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+  </form>
+{{/if}}
+<a href="/products" class="btn btn-secondary">Volver</a>
