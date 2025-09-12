@@ -36,7 +36,7 @@ app.use(methodOverride('_method')); // Configurar method-override
 app.use(express.static(__dirname + '/public'));
 
 // Configuración de sesiones
-app.use(session({
+/*app.use(session({
   store: MongoStore.create({
     mongoUrl: process.env.MONGO_URL,
     ttl: 14 * 24 * 60 * 60, // 14 días en segundos
@@ -44,7 +44,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false,
-}));
+}));*/
 
 // Configuración de Handlebars
 app.engine('handlebars', handlebarsEngine({
