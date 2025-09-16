@@ -12,22 +12,29 @@ import cartsRouter from './routers/cartsRouter.js';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import "dotenv/config";
 
-dotenv.config();
+//dotenv.config();
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 // Conexión a MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch((error) => console.error('Error de conexión a MongoDB:', error));
+export const initMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    // await mongoose.connect(process.env.MONGO_ATLAS_URL);
+  } catch (error) {
+    throw new Error(`Error connecting to MongoDB: ${error}`);
+  }
+};
+
+initMongoDB()
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log(err));
 
 // Middlewares
 app.use(express.json());
@@ -36,15 +43,15 @@ app.use(methodOverride('_method')); // Configurar method-override
 app.use(express.static(__dirname + '/public'));
 
 // Configuración de sesiones
-/*app.use(session({
+app.use(session({
   store: MongoStore.create({
     mongoUrl: process.env.MONGO_URL,
     ttl: 14 * 24 * 60 * 60, // 14 días en segundos
   }),
-  secret: process.env.SESSION_SECRET || 'secret',
+  secret: 'secret',
   resave: false,
   saveUninitialized: false,
-}));*/
+}));
 
 // Configuración de Handlebars
 app.engine('handlebars', handlebarsEngine({
